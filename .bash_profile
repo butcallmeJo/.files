@@ -104,8 +104,8 @@ fi
 # Adding modifications to a separate file like
 # ~/.bash_rc instead of adding them here directly.
 
-if [ -f ~/.bash_rc ]; then
-    . ~/.bash_rc
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
 fi
 
 # enable programmable completion features (you don't need to enable

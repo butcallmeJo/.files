@@ -3,15 +3,15 @@
 #
 
 # Colors and stuffs
-LIGHTCOLOR="\e[0;"
-DARKCOLOR="\e[1;"
+LIGHTCOLOR="\\e[0;"
+DARKCOLOR="\\e[1;"
 BLUE="34m"
 GREEN="32m"
 CYAN="36m"
 RED="31m"
 PURPLE="35m"
 YELLOW="33m"
-ENDCOLOR="\e[0m"
+ENDCOLOR="\\e[0m"
 
 bold=$(tput bold)
 red=$(tput setaf 1)
@@ -31,6 +31,17 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
+# Redirections
+alias dev='cd /mnt/c/Users/josquin.gaillard/Dev'
+alias win='cd /mnt/c/Users/josquin.gaillard'
+alias work='cd /mnt/c/Users/josquin.gaillard/Dev/ClearDATA'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Python 3 default
+alias python='python3'
+alias pip='pip3'
+
 # Misc
 alias h='history'
 alias path='echo -e ${PATH//:/\\n}'
@@ -39,14 +50,14 @@ alias du='du -kh' # Makes a more readable output.
 alias df='df -kTh'
 
 # Add colors for filetype and  human-readable sizes by default on 'ls':
-alias l='ls'
-alias ls='ls -hG'
-alias la='ls -la'
-alias lx='ls -lXB'  #  Sort by extension.
-alias lk='ls -lSr'  #  Sort by size, biggest last.
-alias lt='ls -ltr'  #  Sort by date, most recent last.
-alias lc='ls -ltcr' #  Sort by/show change time,most recent last.
-alias lu='ls -ltur' #  Sort by/show access time,most recent last.
+alias l='ls --color=auto'
+alias ls='ls -hG --color=auto'
+alias la='ls -la --color=auto'
+alias lx='ls -lXB --color=auto'  #  Sort by extension.
+alias lk='ls -lSr --color=auto'  #  Sort by size, biggest last.
+alias lt='ls -ltr --color=auto'  #  Sort by date, most recent last.
+alias lc='ls -ltcr --color=auto' #  Sort by/show change time,most recent last.
+alias lu='ls -ltur --color=auto' #  Sort by/show access time,most recent last.
 
 # The ubiquitous 'll': directories first, with alphanumeric sorting:
 # alias ll="ls -lv --group-directories-first"
@@ -71,7 +82,7 @@ __pwd_trim() {
 	pwd_arr_len=${#pwd_arr[@]}
 	for index in "${!pwd_arr[@]}"; do
 		if [ "${pwd_arr[index]}" == "${home_arr[0]}" ] && [ "${pwd_arr[index+1]}" == "${home_arr[1]}" ] && [ "${pwd_arr[index+2]}" == "${home_arr[2]}" ]; then
-			printf "~/"
+			printf "$HOME/"
 		elif [ "${pwd_arr[index]}" == "${home_arr[index]}" ]; then
 			continue
 		elif [ "${pwd_arr[index]}" == "${pwd_arr[pwd_arr_len-1]}" ]; then
@@ -95,8 +106,8 @@ __pwd_trim() {
 # PS1
 # export PS1='$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\$ '
 export PS1="\[$DARKCOLOR$YELLOW\]\$(__pwd_trim)\[$ENDCOLOR\]\[$LIGHTCOLOR$PURPLE\]\$(__git_ps1) :\[$ENDCOLOR\] \[$LIGHTCOLOR$GREEN\]"
-preexec() { echo -ne "\e[0m"; } 
-# trap 'tput sgr0' DEBUG
+# preexec() { echo -ne "\e[0m"; } 
+trap 'tput sgr0' DEBUG
 
 # set default editor
 # export EDITOR=/usr/bin/emacs
@@ -104,6 +115,7 @@ preexec() { echo -ne "\e[0m"; }
 # 
 # Go env stuff
 # 
-# export GOPATH=$HOME/work
+export GOROOT=/usr/lib/go-1.6
+export GOPATH=/mnt/c/Users/josquin.gaillard/Dev/go
 # export PATH=$PATH:/Users/josquingaillard/work/protoc-3.2.0rc2-osx-x86_64/
 # export PATH=$PATH:$GOPATH/bin
