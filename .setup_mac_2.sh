@@ -7,7 +7,7 @@
 ## Automated Set ups:
 
 # install bash_rc
-curl -o ~/.bashrc https://raw.githubusercontent.com/butcallmeJo/.files/master/.bash_rc
+curl -o ~/.bashrc https://raw.githubusercontent.com/butcallmeJo/.files/master/.bashrc
 
 # Dock Settings
 defaults write com.apple.dock workspaces-auto-swoosh -bool NO # Disable auto-switching
@@ -78,3 +78,21 @@ echo 'export GOROOT=/usr/local/opt/go/libexec' >> ~/.bashrc
 echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:$GOROOT/bin' >> ~/.bashrc
 mkdir -p $GOPATH $GOPATH/src $GOPATH/pkg $GOPATH/bin
+
+# Install alfred
+brew cask install alfred
+
+# Install chrome
+brew cask install google-chrome
+
+# Install vscode
+brew cask install visual-studio-code
+
+# Install cheatsheet
+brew cask install cheatsheet
+
+# Install docker
+brew cask install docker
+
+# Install spectacle
+brew cask install spectacle
