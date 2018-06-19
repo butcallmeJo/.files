@@ -38,6 +38,12 @@ brew tap caskroom/cask
 # Install iTerm2
 brew cask install iterm2
 
+# Install wget
+brew install wget
+
+# Install htop
+brew install htop
+
 # Install zsh
 brew install zsh
 # Install oh my zsh
